@@ -1,11 +1,7 @@
 import asyncio
-import io
 import google.generativeai as genai
 import streamlit as st
 import edge_tts
-import speech_recognition as sr
-from pydub import AudioSegment
-from streamlit_mic_recorder import mic_recorder
 
 st.set_page_config(page_title="Aura", page_icon="✨", layout="wide")
 genai.configure(api_key=st.secrets['GEMINI_API_KEY'])
@@ -62,22 +58,6 @@ async def speak(text):
 
 
 prompt = None
-
-audio = mic_recorder(start_prompt="🎙️ spill it", stop_prompt="⏹️ done", key="recorder")
-if audio:
-    audio_bytes = audio["bytes"]
-    sound = AudioSegment.from_file(io.BytesIO(audio_bytes))
-    sound.export("input.wav", format="wav")
-
-    recognizer = sr.Recognizer()
-    with sr.AudioFile("input.wav") as source:
-        audio_data = recognizer.record(source)
-    try:
-        prompt = recognizer.recognize_google(audio_data)
-    except sr.UnknownValueError:
-        st.warning("couldn't catch that, try again 🎤")
-    except sr.RequestError:
-        st.error("speech service is being weird rn, try typing instead")
 
 typed = st.chat_input("yo, what's the tea? 👀")
 if typed:
