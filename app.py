@@ -3,8 +3,7 @@ import google.generativeai as genai
 import streamlit as st
 import edge_tts
 import speech_recognition as sr
-from streamlit_mic_recorder 
-import mic_recorder
+from streamlit_mic_recorder import mic_recorder
 
 st.set_page_config(page_title="Aura", page_icon="✨", layout="wide")
 genai.configure(api_key=st.secrets['GEMINI_API_KEY'])
