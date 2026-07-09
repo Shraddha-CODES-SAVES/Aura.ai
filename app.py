@@ -12,15 +12,18 @@ m = genai.GenerativeModel("gemini-2.5-flash")
 st.markdown("""
 <style>
 .stApp{
-background: linear-gradient(-45deg, #0f0f23, #1d1d44, #2d1b4e, #121212);
-background-size: 400% 400%;
-animation: gradientShift 15s ease infinite;
+background-image: url("https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1920&q=80");
+background-size: cover;
+background-position: center;
+background-attachment: fixed;
 color:white;
 }
-@keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+.stApp::before{
+content: "";
+position: fixed;
+top: 0; left: 0; right: 0; bottom: 0;
+background: rgba(10, 10, 30, 0.75);
+z-index: 0;
 }
 h1{
 text-align:center;
@@ -28,16 +31,29 @@ font-size:60px;
 background: linear-gradient(90deg, #ff6ec4, #7873f5, #4ade80);
 -webkit-background-clip: text;
 -webkit-text-fill-color: transparent;
+position: relative;
+z-index: 1;
 }
 div[data-testid="stChatInput"]{
 border-radius:20px;
+position: relative;
+z-index: 1;
 }
 [data-testid="stChatMessage"]{
-background: rgba(255,255,255,0.05);
+background: rgba(255,255,255,0.08);
 border-radius: 15px;
 padding: 10px;
+backdrop-filter: blur(10px);
+position: relative;
+z-index: 1;
+}
+[data-testid="stAppViewContainer"] > .main{
+position: relative;
+z-index: 1;
 }
 </style>
+""", unsafe_allow_html=True)
+
 """, unsafe_allow_html=True)
 
 st.title("✨ Aura")
