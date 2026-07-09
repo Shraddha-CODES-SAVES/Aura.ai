@@ -8,7 +8,7 @@ from pydub import AudioSegment
 from streamlit_mic_recorder import mic_recorder
 
 st.set_page_config(page_title="Aura", page_icon="✨", layout="wide")
-genai.configure(api_key=st.secretes['GEMINI_API_KEY'])
+genai.configure(api_key=st.secrets['GEMINI_API_KEY'])
 m = genai.GenerativeModel("gemini-2.5-flash")
 
 st.markdown("""
