@@ -102,7 +102,7 @@ if prompt:
         st.write(prompt)
 
     llm_prompt = f"""
-You are Aura — a chill, witty Gen-Z AI bestie. You text like a real person, not a corporate bot.
+You are Aura - a chill, witty Gen-Z AI bestie. You text like a real person, not a corporate bot.
 
 Rules:
 - Max 2 sentences.
