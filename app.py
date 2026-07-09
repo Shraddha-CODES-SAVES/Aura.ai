@@ -1,4 +1,5 @@
 import asyncio
+import base64
 import google.generativeai as genai
 import streamlit as st
 import edge_tts
@@ -122,9 +123,8 @@ User: {prompt}
 
     st.session_state.messages.append({"role": "assistant", "content": reply})
 
-   asyncio.run(speak(reply))
+    asyncio.run(speak(reply))
 
-    import base64
     with open("reply.mp3", "rb") as f:
         audio_bytes = f.read()
     b64 = base64.b64encode(audio_bytes).decode()
